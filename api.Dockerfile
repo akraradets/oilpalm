@@ -26,4 +26,9 @@ RUN pip3 install rioxarray
 RUN pip3 install Fiona
 RUN pip3 install geopandas
 
-CMD tail -f /dev/null
+# WebAPI
+RUN pip3 install "fastapi[all]"
+RUN pip3 install python-multipart
+
+CMD /bin/bash -c "uvicorn main:app --reload --host 0.0.0.0 --port 8000"
+# CMD tail -f /dev/null
