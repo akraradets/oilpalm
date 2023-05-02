@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  api:
+    image: akraradets/oilpaml-api:1.0.0
+    build: 
+      context: .
+      dockerfile: api.Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/root/projects
+      - ./.vscode-server/api:/root/.vscode-server
+  web:
+    image: akraradets/oilpaml-web:1.0.0
+    build: 
+      context: .
+      dockerfile: web.Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./web:/var/www/html
+      - ./.vscode-server/web:/root/.vscode-server
+    
